@@ -16,7 +16,6 @@ for value in open("input_7.txt").read().strip().split(','):
 #     if value > max_pos:
 #         max_pos = value
 
-total = counts.sum()
 r_count, r_cost, r_penalty = 0, 0, 0
 # print("Counts:\n{}".format(counts[:max_pos+1]))
 # print("Forward pass:")
