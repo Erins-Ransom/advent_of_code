@@ -18,19 +18,18 @@ young = np.zeros(9, dtype=int)
 # effect the outcome so long as no fish with more than 7 days in 
 # their cycle is added to the 'old' cycle.  Consider that, after 
 # one cycle, the new young and old counts for that day will be the 
-# same regardless of which array they start in as at least one 
-# would start empty.
+# same regardless of which array they start in.
 for value in open("input_6.txt").read().strip().split(','):
     young[int(value)] += 1
 
 # For each day, the number of new fish bred will be the sum of 
 # the young and old fish breeing on that day, while the young 
-# fish that breed will then mature and become old fish.  day % 7.e.
-#   young[day % 9] -> young[day % 9] + old[day % y]
+# fish that breed will then mature and become old fish. i.e.
+#   new_young[day % 9] -> old_young[day % 9] + old_old[day % y]
+#   new_old[day % 7] -> old_young[day % 9] + old_old[day % y]
 for day in range(256):
-    temp = young[day % 9]
     young[day % 9] += old[day % 7]
-    old[day % 7] += temp
+    old[day % 7] = young[day % 9]
     vizualize(day, young, old)
 
 print("There are {} fish after 256 days".format(old.sum() + young.sum()))
