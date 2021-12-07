@@ -6,8 +6,6 @@ young = np.zeros(9, dtype=int)
 for value in open("input_6.txt").read().strip().split(','):
     if int(value) <= 8:
         young[int(value)] += 1
-    else:
-        old[(int(value)-8)%7] += 1
 
 for day in range(256):
     i = day % 7
@@ -15,7 +13,7 @@ for day in range(256):
     temp = young[j]
     young[j] += old[i]
     old[i] += temp
-    # print("Day {}\nYoung fish:\t{}\nOld fish:\t{}".format(i, young, old))
+    print("Day {}\nYoung fish:\t{}{}\nOld fish:\t{}{}".format(day, young, j, old, i))
 
 print(old.sum() + young.sum())
 
