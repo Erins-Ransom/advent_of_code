@@ -1,5 +1,10 @@
 import numpy as np
 
+def vizualize(day, young, old):
+    print("Day {}".format(day))
+    print("Young fish:\t{}".format([{value} if i == day % 9 else value for i,value in enumerate(young)])) 
+    print("Old fish:\t{}".format([{value} if i == day % 7 else value for i,value in enumerate(old)]))
+
 old = np.zeros(7, dtype=int)
 young = np.zeros(9, dtype=int)
 
@@ -13,7 +18,8 @@ for day in range(256):
     temp = young[j]
     young[j] += old[i]
     old[i] += temp
-    print("Day {}\nYoung fish:\t{}{}\nOld fish:\t{}{}".format(day, young, j, old, i))
+    vizualize(day, young, old)
 
 print(old.sum() + young.sum())
+
 
