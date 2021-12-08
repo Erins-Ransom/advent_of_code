@@ -3,7 +3,7 @@
 count = 0
 for output in [line.split('| ')[-1] for line in open("input_8.txt").read().split('\n')]:
     for string in output.split(' '):
-        if len(string) in [2,2,4,7]:
+        if len(string) in [2,3,4,7]:
             count += 1
 print(count)
 
